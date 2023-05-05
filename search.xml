@@ -1,8 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PHP学习</title>
+    <url>/2023/05/05/PHP%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<blockquote>
+<p>PHP是世界上最好的语言</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="0x00-PHP基础"><a href="#0x00-PHP基础" class="headerlink" title="0x00 PHP基础"></a>0x00 PHP基础</h1>]]></content>
+      <categories>
+        <category>基础学习</category>
+        <category>编程基础</category>
+        <category>PHP基础学习</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Git学习</title>
     <url>/2023/05/05/Git%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<blockquote>
+<p>Git是一个开源的分布式版本控制系统</p>
+</blockquote>
+<span id="more"></span>
+
+<h1 id="0x00-Git概念"><a href="#0x00-Git概念" class="headerlink" title="0x00 Git概念"></a>0x00 Git概念</h1><h2 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1. 版本控制"></a>1. 版本控制</h2><p>​	什么是版本控制？引用自百度百科的解释如下：</p>
+<blockquote>
+<p>版本控制是指对软件开发过程中各种程序代码、配置文件及说明文档等文件变更的管理，是软件配置管理的核心思想之一。</p>
+</blockquote>
+<p>​	简单来说就是<strong>记录</strong>和<strong>管理</strong>、<strong>跟踪</strong>版本信息迭代的过程。</p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505201244428.png" alt="image-20230505201244428"></p>
+<p>​	Linux内核开源，整个项目组启用了一个专有的分布式版本控制系统BitKeeper来管理和维护代码。后面因为有内鬼的缘故导致合作关系结束，故开发了Git进行分布式版本控制。</p>
+<p>​	为什么需要这玩意呢？我想大概是因为爱吧~</p>
+<ul>
+<li>备份和恢复</li>
+<li>协同开发</li>
+<li>代码管理</li>
+<li>测试和回滚</li>
+<li>自动化构建和部署</li>
+<li>…</li>
+</ul>
+<p>​	所有的版本控制系统，其实只能跟踪<strong>文本文件</strong>的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。版本控制系统可以告诉你每次的改动，比如在第5行加了一个单词“Linux”，在第8行删了一个单词“Windows”。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。</p>
+<h2 id="2-分类"><a href="#2-分类" class="headerlink" title="2. 分类"></a>2. 分类</h2><h3 id="2-1-本地版本控制"><a href="#2-1-本地版本控制" class="headerlink" title="2.1 本地版本控制"></a>2.1 本地版本控制</h3><p>​	没有所谓的协同开发，版本库存在于本地主机上。、</p>
+<p>​	什么是版本库呢？版本库又名仓库，英文名<strong>repository</strong>，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。</p>
+<h3 id="2-2-集中版本控制"><a href="#2-2-集中版本控制" class="headerlink" title="2.2 集中版本控制"></a>2.2 集中版本控制</h3><p>​	以CVS和SVN为代表的都是集中式版本控制系统。</p>
+<p>​	集中版本控制的核心在于系统中存在一台中央服务器，进行联网才能进行工作。同时用户主机上没有版本库，所有的数据均集中在中央服务器上。</p>
+<h3 id="2-3-分布式版本控制"><a href="#2-3-分布式版本控制" class="headerlink" title="2.3 分布式版本控制"></a>2.3 分布式版本控制</h3><p>​	每台主机上都可以存在版本库，且可以进行”pull”和”push”等操作。</p>
+<p>​	摆脱了打工仔的身份，翻身当地主，自己的东西想怎么玩就怎么玩。</p>
+<p>​	Git是分布式版本控制系统，由工作区、暂存区和版本库组成。</p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505215032868.png" alt="image-20230505215032868"></p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505215850011.png" alt="image-20230505215850011"></p>
+<h2 id="3-常见版本控制工具"><a href="#3-常见版本控制工具" class="headerlink" title="3. 常见版本控制工具"></a>3. 常见版本控制工具</h2><p>​	蛮多的，主流的就这几个。</p>
+<ul>
+<li>Git</li>
+<li>SVN</li>
+<li>CVS</li>
+</ul>
+<h1 id="0x01-Git实操"><a href="#0x01-Git实操" class="headerlink" title="0x01 Git实操"></a>0x01 Git实操</h1><h2 id="1-安装和配置Git"><a href="#1-安装和配置Git" class="headerlink" title="1. 安装和配置Git"></a>1. 安装和配置Git</h2><h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><ul>
+<li>Windows安装</li>
+</ul>
+<p>​	Windows环境下安装无脑下一步。</p>
+<p>​	国内镜像源：<a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">https://registry.npmmirror.com/binary.html?path=git-for-windows/</a></p>
+<ul>
+<li>其他</li>
+</ul>
+<p>​	略。</p>
+<p>​	安装成功后，右击菜单和开始菜单中出现几个小玩意。</p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505210817053.png" alt="image-20230505210817053"></p>
+<ul>
+<li>Git CMD：Windows风格命令行</li>
+<li>Git Bash：Linux风格命令行</li>
+<li>Git GUI：图形化界面</li>
+</ul>
+<h3 id="1-2-基础配置"><a href="#1-2-基础配置" class="headerlink" title="1.2 基础配置"></a>1.2 基础配置</h3><ul>
+<li>配置信息</li>
+</ul>
+<p>​	安装完成后，<strong>必须</strong>要进行的第一步配置是自报家门。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱地址&quot;</span><br><span class="line"># --global表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他配置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor subline # 设置文本编辑器</span><br><span class="line">git config --global merge.tool vimdiff # 设置差异分析工具</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看帮助信息</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git -h # 短格式</span><br><span class="line">git --help # 长格式</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看版本信息</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看配置</li>
+</ul>
+<p>​	本质上是查看相应配置文件中的内容。</p>
+<p>​	当前用户的配置文件存在于~&#x2F;.gitconfig，对应Windows系统的C:\Users\Administrator.gitconfig</p>
+<p>​	所有用户的配置文件存在于Git安装目录下的&#x2F;etc&#x2F;.gitconfig</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --list # 查看所有配置信息</span><br><span class="line">git config --global --list # 查看当前用户配置信息</span><br><span class="line">git config --system --list # 查看所有用户配置信息</span><br><span class="line">git config user.name # 查看某项配置信息</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-新建仓库"><a href="#2-新建仓库" class="headerlink" title="2. 新建仓库"></a>2. 新建仓库</h2><h3 id="2-1-新建本地仓库"><a href="#2-1-新建本地仓库" class="headerlink" title="2.1 新建本地仓库"></a>2.1 新建本地仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir work</span><br><span class="line">cd work</span><br><span class="line">git init # 初始化Git仓库</span><br><span class="line">git init [dir] # 在指定目录初始化Git仓库</span><br><span class="line"># 执行完git init后，会在当前目录自动生成一个.git目录，用于跟踪管理仓库</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-克隆远程仓库"><a href="#2-2-克隆远程仓库" class="headerlink" title="2.2 克隆远程仓库"></a>2.2 克隆远程仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone [URL] # 从现有Git仓库中拷贝项目</span><br><span class="line"># 执行该命令后，会在当前目录下创建一个目录，其中包含一个 .git 的目录，用于保存下载下来的所有版本记录</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-添加新文件"><a href="#3-添加新文件" class="headerlink" title="3. 添加新文件"></a>3. 添加新文件</h2><ul>
+<li>在仓库目录下新建文件</li>
+</ul>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505214721254.png" alt="image-20230505214721254"></p>
+<ul>
+<li>提交文件到暂存区</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add 文件名</span><br><span class="line">git add 文件1 文件2</span><br><span class="line">git add . # 提交所有文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>提交文件到仓库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;备注信息&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-查看状态与差异"><a href="#4-查看状态与差异" class="headerlink" title="4. 查看状态与差异"></a>4. 查看状态与差异</h2><p>​	使用<code>git status</code>查看当前仓库的状态，比如文件是否被修改过…</p>
+<p>​	如下命令结果输出告诉我们test.txt被修改过了。</p>
+<p>​	<img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505220135516.png" alt="image-20230505220135516"></p>
+<p>​	被修改了又怎样，能更具体的知道哪被修改了吗？当然可以！</p>
+<p>​	使用<code>git diff</code>查看差异。</p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505220514584.png" alt="image-20230505220514584"></p>
+<p>​	输出结果中的第一行 <code>diff --git a/test.txt b/test.txt</code> 表示比较的是文件 <code>test.txt</code> 的两个版本。其中 <code>a/test.txt</code> 表示原文件，<code>b/test.txt</code> 表示新文件。</p>
+<p>​	输出结果中的第二行 <code>index 50dbb41..026757c 100644</code> 是 Git 使用 SHA-1 哈希算法计算文件内容的哈希值，用于表示文件的唯一标识符和版本号。</p>
+<p>​	输出结果中的第三行 <code>--- a/test.txt</code> 表示原文件的版本信息，<code>+++ b/test.txt</code> 表示新文件的版本信息。</p>
+<p>​	输出结果中的第四行 <code>@@ -1 +1,2 @@</code> 表示文件中更改的位置和范围。其中 <code>-1</code> 表示原文件中从第一行开始的一行，<code>+1,2</code> 表示新文件中从第一行开始的两行。</p>
+<p>​	输出结果中的第五行 <code>-Git id GOD!</code> 表示原文件中被删除的内容。</p>
+<p>​	输出结果中的第六行 <code>+Git id GOD!</code> 表示新文件中被添加的内容。</p>
+<p>​	输出结果中的第七行 <code>+Git is GOD!</code> 表示新文件中被添加的内容。</p>
+<p>​	输出结果中的第八行 <code>\ No newline at end of file</code> 表示文件末尾没有换行符。</p>
+<p>​	因此，这个输出结果显示了工作目录中的文件 <code>test.txt</code> 和暂存区中的文件 <code>test.txt</code> 之间的差异，其中第五行表示原文件中被删除的内容，第六行和第七行表示新文件中被添加的内容。</p>
+<p>​	完事后使用<code>git add</code>和<code>git commit</code>命令送文件上路。</p>
+<h2 id="5-版本回退"><a href="#5-版本回退" class="headerlink" title="5. 版本回退"></a>5. 版本回退</h2><p>​	每次commit的记录都会保存，但肯定不是保存在我们的脑子里，而是可以通过<code>git log</code>查看commit的历史记录。</p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505222221664.png" alt="image-20230505222221664"></p>
+<p>​	可以加上<code>--pertty=oneline</code>参数让输出结果更简单~</p>
+<p>​	怎么实现版本回退呢？使用<code>git reset</code>命令。</p>
+<p>​	在Git中，<code>HEAD</code>表示当前版本，上一个版本是<code>HEAD^</code>，以此类推。上个版本可以省略写成<code>HEAD~1</code>。</p>
+<p>​	回退后原本的版本信息已经不复存在，但是我们只要有commit id（可以省略），还是可以回退回去的。还可以通过<code>git reflog</code>查看我们的命令记录。</p>
+<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505223032823.png" alt="image-20230505223032823"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><p>廖雪峰老师Git教程：<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000">https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000</a></p>
+</li>
+<li><p>菜鸟教程：<a href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
+</li>
+<li><p>Pro Git：<a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>基础学习</category>
+        <category>编程基础</category>
+        <category>代码管理</category>
+      </categories>
+      <tags>
+        <tag>学习</tag>
+      </tags>
   </entry>
 </search>
