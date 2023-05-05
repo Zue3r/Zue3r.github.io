@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>PHP学习</title>
-    <url>/2023/05/05/PHP%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<blockquote>
-<p>PHP是世界上最好的语言</p>
-</blockquote>
-<span id="more"></span>
-<h1 id="0x00-PHP基础"><a href="#0x00-PHP基础" class="headerlink" title="0x00 PHP基础"></a>0x00 PHP基础</h1>]]></content>
-      <categories>
-        <category>基础学习</category>
-        <category>编程基础</category>
-        <category>PHP基础学习</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Git学习</title>
     <url>/2023/05/05/Git%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<blockquote>
@@ -163,5 +149,19 @@
       <tags>
         <tag>学习</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>PHP学习</title>
+    <url>/2023/05/05/PHP%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<blockquote>
+<p>PHP是世界上最好的语言</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="0x00-PHP基础"><a href="#0x00-PHP基础" class="headerlink" title="0x00 PHP基础"></a>0x00 PHP基础</h1>]]></content>
+      <categories>
+        <category>基础学习</category>
+        <category>编程基础</category>
+        <category>PHP基础学习</category>
+      </categories>
   </entry>
 </search>
