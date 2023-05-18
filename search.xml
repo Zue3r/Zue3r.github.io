@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Code-Audit-Challenges之PHP</title>
-    <url>/2023/05/08/Code-Audit-Challenges/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Git学习</title>
-    <url>/2023/05/05/Git%E5%AD%A6%E4%B9%A0/</url>
+    <title>git现学现用</title>
+    <url>/2023/05/18/Git%E7%8E%B0%E5%AD%A6%E7%8E%B0%E7%94%A8/</url>
     <content><![CDATA[<blockquote>
 <p>Git是一个开源的分布式版本控制系统。</p>
-<p>Linux内核开源项目有着为数众多的参与者。最初是Linus手动合并各方大神的代码，后面很难进行手工管理了，故整个项目组启用了一个专有的分布式版本控制系统BitKeeper来管理和维护代码。好景不长，后面因为有内鬼的缘故导致合作关系结束，Linus含泪开发了Git用于分布式版本控制。</p>
 </blockquote>
+<p><tt>Linux内核开源项目有着为数众多的参与者。最初是Linus手动合并各方大神的代码，后面很难进行手工管理了，故整个项目组启用了一个专有的分布式版本控制系统BitKeeper来管理和维护代码。好景不长，后面因为有内鬼的缘故导致合作关系结束，Linus含泪开发了Git用于分布式版本控制。</p>
 <span id="more"></span>
 
-<h1 id="0x00-Git概念"><a href="#0x00-Git概念" class="headerlink" title="0x00 Git概念"></a>0x00 Git概念</h1><h2 id="1-版本控制"><a href="#1-版本控制" class="headerlink" title="1. 版本控制"></a>1. 版本控制</h2><h3 id="1-1-版本控制的概念"><a href="#1-1-版本控制的概念" class="headerlink" title="1.1 版本控制的概念"></a>1.1 版本控制的概念</h3><p>​	什么是版本控制？简单来说就是<strong>记录</strong>和<strong>管理</strong>、<strong>跟踪</strong>版本信息迭代的过程。就存档类游戏而言，我们需要不断对游戏进度就进行存档，以保证退出游戏后当前游戏进度不会丢失，而每一次的存档就相当于这个地方的版本，我们有必要对版本进行控制。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506110630663.png" alt="image-20230506110630663"></p>
-<h3 id="1-2-版本控制的分类"><a href="#1-2-版本控制的分类" class="headerlink" title="1.2 版本控制的分类"></a>1.2 版本控制的分类</h3><h4 id="1-2-1-本地版本控制"><a href="#1-2-1-本地版本控制" class="headerlink" title="1.2.1 本地版本控制"></a>1.2.1 本地版本控制</h4><p>​	没有所谓的协同开发，版本库存在于本地主机上，本地版本控制系统大多都是采用某种简单的数据库来记录文件的历次更新差异。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506112210052.png" alt="image-20230506112210052"></p>
-<h4 id="1-2-2-集中版本控制"><a href="#1-2-2-集中版本控制" class="headerlink" title="1.2.2 集中版本控制"></a>1.2.2 集中版本控制</h4><p>​	以CVS和SVN为代表的都是集中式版本控制系统。</p>
-<p>​	集中版本控制的核心在于系统中存在一台中央服务器，<strong>进行联网才能进行工作</strong>。同时用户主机上没有版本库，所有的数据均集中在中央服务器上，<strong>存在单点故障的风险</strong>。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506112318159.png" alt="image-20230506112318159"></p>
-<h4 id="1-2-3-分布式版本控制"><a href="#1-2-3-分布式版本控制" class="headerlink" title="1.2.3 分布式版本控制"></a>1.2.3 分布式版本控制</h4><p>​	以Git为代表的是分布式版本控制系统。Git使得每台主机上都存在版本库，近乎所有操作都是本地执行，且直接记录快照，保证数据完整性。</p>
-<p>​	摆脱了打工仔的身份，翻身当地主，自己的东西想怎么玩就怎么玩。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506112029399.png" alt="image-20230506112029399"></p>
-<h3 id="1-3-常见版本控制工具"><a href="#1-3-常见版本控制工具" class="headerlink" title="1.3 常见版本控制工具"></a>1.3 常见版本控制工具</h3><ul>
-<li>Git</li>
-<li>SVN</li>
-<li>CVS</li>
-</ul>
-<br />
+<br/>
 
-<h2 id="2-Git简介"><a href="#2-Git简介" class="headerlink" title="2. Git简介"></a>2. Git简介</h2><p>​	Git是分布式版本控制系统。Git使得客户端拥有仓库的完整镜像，即使服务器挂了也不要紧，事后可以用任何一个镜像出来的本地仓库恢复。（你有我有大家都有）</p>
-<p>​	在这种模式下Git中存在三块区域：工作区、暂存区以及仓库。工作区就是我们在电脑里能看到的目录；暂存区本质上是一个文件(.git&#x2F;index)，保存了下次要提交的文件列表信息；仓库是Git用来保存项目的元数据和对象数据库的地方，工作区中有个.git目录，该目录就是本地仓库。</p>
-<p>​	三块区域也对应着三种状态：已修改、已暂存和已提交。如果Git目录中保存着特定版本的文件，就属于<strong>已提交</strong>的状态；如果文件已修改并放入暂存区，就属于<strong>已暂存</strong>的状态；如果自上次检出后，作了修改但还没放入暂存区，就是<strong>已修改</strong>的状态。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506120005805.png" alt="image-20230506120005805"></p>
-<p><br /><br /></p>
-<h1 id="0x01-Git基本操作"><a href="#0x01-Git基本操作" class="headerlink" title="0x01 Git基本操作"></a>0x01 Git基本操作</h1><h2 id="1-安装和配置Git"><a href="#1-安装和配置Git" class="headerlink" title="1. 安装和配置Git"></a>1. 安装和配置Git</h2><h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><p>​	Windows环境下安装无脑下一步。</p>
-<p>​	国内镜像源：<a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">https://registry.npmmirror.com/binary.html?path=git-for-windows/</a></p>
-<p>​	安装成功后，右击快捷菜单和开始菜单中出现几个小玩意。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230505210817053.png" alt="image-20230505210817053"></p>
-<ul>
-<li>Git CMD：Windows风格命令行</li>
-<li>Git Bash：Linux风格命令行</li>
-<li>Git GUI：图形化界面</li>
+<h1 id="一、版本控制"><a href="#一、版本控制" class="headerlink" title="一、版本控制"></a>一、版本控制</h1><p>什么是版本控制？简单来说就是<strong>记录</strong>和<strong>管理</strong>、<strong>跟踪</strong>版本信息迭代的过程。就存档类游戏而言，我们需要不断对游戏进度就进行存档，以保证退出游戏后当前游戏进度不会丢失，而每一次的存档就相当于这个地方的版本，我们有必要对版本进行控制。</p>
+<p>版本控制分为本地版本控制、集中版本控制以及分布式版本控制，常见的版本控制工具有Git、SVN以及CVS等。</p>
+<p><img src="/git%E7%8E%B0%E5%AD%A6%E7%8E%B0%E7%94%A8/image-20230518222049535.png" alt="image-20230518222049535"></p>
+<p><br/><br/></p>
+<h1 id="二、Git使用"><a href="#二、Git使用" class="headerlink" title="二、Git使用"></a>二、Git使用</h1><h2 id="1-Git基本概念"><a href="#1-Git基本概念" class="headerlink" title="1. Git基本概念"></a>1. Git基本概念</h2><p>Git是我们进行分布式版本控制的基石。Git使得客户端拥有仓库的完整镜像，即使服务器挂了也不要紧，事后可以用任何一个镜像出来的本地仓库恢复。</p>
+<p>在这种模式下，Git中存在着三块区域：工作区、暂存区以及仓库。工作区就是我们在电脑里能看到的目录；暂存区本质上是一个文件(.git&#x2F;index)，临时存放我们的改动；仓库是Git用来保存项目的元数据和对象数据库的地方，工作区中有个.git目录，该目录就是本地仓库。</p>
+<p>三块区域也对应着三种状态：已修改、已暂存和已提交。如果Git目录中保存着特定版本的文件，就属于<strong>已提交</strong>的状态；如果文件已修改并放入暂存区，就属于<strong>已暂存</strong>的状态；如果自上次检出后，作了修改但还没放入暂存区，就是<strong>已修改</strong>的状态。</p>
+<p><img src="/git%E7%8E%B0%E5%AD%A6%E7%8E%B0%E7%94%A8/image-20230518224412426.png" alt="image-20230518224412426"></p>
+<blockquote>
+<p>仓库中的文件状态</p>
+</blockquote>
+<p>仓库中的文件状态有两种：已跟踪和未跟踪。未跟踪的文件不会被纳入版本控制。一般有些文件无需纳入Git的管理，也不希望出现在未跟踪列表，这时候可以使用**.gitignore**文件列出要忽略的文件模式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.a # 忽略所有的.a文件</span><br><span class="line">!lib.a # 跟踪所有的lib.a</span><br><span class="line">/TODO # 只忽略当前目录下的TODO</span><br><span class="line">build/ # 忽略任何目录下名为build的文件</span><br><span class="line">doc/*.txt # 忽略doc/a.txt，但不忽略doc/a/a.txt</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h2 id="2-Git下载与安装"><a href="#2-Git下载与安装" class="headerlink" title="2. Git下载与安装"></a>2. Git下载与安装</h2><ul>
+<li>常规下载</li>
 </ul>
-<h3 id="1-2-基础配置"><a href="#1-2-基础配置" class="headerlink" title="1.2 基础配置"></a>1.2 基础配置</h3><p>​	Git自带一个<code>git config</code>的工具来方便我们对配置文件中的变量进行操作。这些变量存储在三个不同的位置。可以使用<code>git config --show-origin --list</code>来查看所有的配置以他们所在的文件。</p>
+<blockquote>
+<p>下载git OSX版：<a href="http://git-scm.com/download/mac">http://git-scm.com/download/mac</a></p>
+<p>下载git Windows版：<a href="http://git-for-windows.github.io/">http://git-for-windows.github.io/</a></p>
+<p>下载git Linux版：<a href="http://book.git-scm.com/2_installing_git.html">http://book.git-scm.com/2_installing_git.html</a></p>
+</blockquote>
+<ul>
+<li>镜像站下载</li>
+</ul>
+<blockquote>
+<p>国内镜像源：<a href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">https://registry.npmmirror.com/binary.html?path=git-for-windows/</a></p>
+</blockquote>
+<br/>
+
+<h2 id="3-Git基础配置"><a href="#3-Git基础配置" class="headerlink" title="3. Git基础配置"></a>3. Git基础配置</h2><p>Git自带一个<code>git config</code>的工具来方便我们对配置文件中的变量进行操作。可以使用<code>git config --show-origin --list</code>来查看所有的配置和他们所在的文件。</p>
 <table>
 <thead>
 <tr>
@@ -71,123 +69,112 @@
 </tr>
 </tbody></table>
 <ul>
-<li>配置用户信息（<strong>必须要进行的一步</strong>）</li>
+<li>配置用户信息（必须配置）</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱地址&quot;</span><br><span class="line"># --global表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其他配置</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global core.editor subline # 设置文本编辑器</span><br><span class="line">git config --global merge.tool vimdiff # 设置差异分析工具</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;用户名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱地址&quot;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>查看帮助信息</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git -h # 短格式</span><br><span class="line">git --help # 长格式</span><br><span class="line">git help &lt;verb&gt; # 获取git config的命令的手册，执行git help config</span><br><span class="line">git &lt;verb&gt; --help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git -h</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>查看版本信息</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git -v</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git -v</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>查看配置</li>
+<li>查看配置信息</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --list # 查看所有配置信息</span><br><span class="line">git config --global --list # 查看当前用户配置信息</span><br><span class="line">git config --system --list # 查看所有用户配置信息</span><br><span class="line">git config &lt;key&gt; # 查看某项配置信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
 
-<br />
+<br/>
 
-<h2 id="2-新建仓库及文件操作"><a href="#2-新建仓库及文件操作" class="headerlink" title="2. 新建仓库及文件操作"></a>2. 新建仓库及文件操作</h2><h3 id="2-1-新建仓库"><a href="#2-1-新建仓库" class="headerlink" title="2.1 新建仓库"></a>2.1 新建仓库</h3><h4 id="2-1-1-新建本地仓库"><a href="#2-1-1-新建本地仓库" class="headerlink" title="2.1.1 新建本地仓库"></a>2.1.1 新建本地仓库</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init # 初始化Git仓库</span><br><span class="line">git init [dir] # 在指定目录初始化Git仓库</span><br><span class="line"># 执行完git init后，会在当前目录自动生成一个.git目录，用于跟踪管理仓库</span><br></pre></td></tr></table></figure>
-
-<p>​	完成这个步骤后，我们也仅仅是做了一个初始化的操作，项目里的文件还没有被纳入版本控制。</p>
-<h4 id="2-1-2-克隆远程仓库"><a href="#2-1-2-克隆远程仓库" class="headerlink" title="2.1.2 克隆远程仓库"></a>2.1.2 克隆远程仓库</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone [URL] # 从现有Git仓库中拷贝项目</span><br><span class="line">git clone [URL] name # 自定义名称</span><br><span class="line"># 执行该命令后，会在当前目录下创建一个目录，其中包含一个 .git 的目录，用于保存下载下来的所有版本记录</span><br><span class="line"># &quot;origin&quot;是git clone时默认的远程仓库名字</span><br></pre></td></tr></table></figure>
-
-<p>​	完成这个步骤后，工作区的所有文件都被纳入版本控制，并处于未修改的状态。</p>
-<h3 id="2-2-文件操作"><a href="#2-2-文件操作" class="headerlink" title="2.2 文件操作"></a>2.2 文件操作</h3><h4 id="2-2-1-文件状态"><a href="#2-2-1-文件状态" class="headerlink" title="2.2.1 文件状态"></a>2.2.1 文件状态</h4><p>​	仓库中的文件状态有两种：已跟踪和未跟踪。未跟踪的文件不会被纳入版本控制。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506123429268.png" alt="image-20230506123429268"></p>
-<p>​	一般有些文件无需纳入Git的管理，也不希望出现在未跟踪列表，这时候可以使用.gitignore文件列出要忽略的文件模式。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506125523939.png" alt="image-20230506125523939"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.a # 忽略所有的.a文件</span><br><span class="line">!lib.a # 跟踪所有的lib.a</span><br><span class="line">/TODO # 只忽略当前目录下的TODO</span><br><span class="line">build/ # 忽略任何目录下名为build的文件</span><br><span class="line">doc/*.txt # 忽略doc/a.txt，但不忽略doc/a/a.txt</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="2-2-2-文件操作"><a href="#2-2-2-文件操作" class="headerlink" title="2.2.2 文件操作"></a>2.2.2 文件操作</h4><ul>
-<li>将内容添加到下一次提交中</li>
+<h2 id="4-Git基本操作"><a href="#4-Git基本操作" class="headerlink" title="4. Git基本操作"></a>4. Git基本操作</h2><ul>
+<li>新建本地仓库</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add &lt;filename/dir&gt;</span><br><span class="line">git add . # 将当前目录下的所有文件到暂存区</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看文件状态</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br><span class="line">git status -s/-short # 简洁输出，??未加入版本控制，A新添加到暂存区，M已修改</span><br><span class="line"># Untracked files 未跟踪文件</span><br><span class="line"># Modified 已修改</span><br><span class="line"># Changes to ben committed 已暂存</span><br><span class="line"># Changes not staged for commit 已修改未暂存</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init # 执行完会生成.git目录</span><br><span class="line">git clone URL # 远程</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>比较差异</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff # 查看已修改和已暂存文件（同一份）的内容差异</span><br><span class="line"># --staged/--cached 查看已暂存文件将要添加到下次提交的内容</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git diff # 查看已修改和已暂存文件（同一份）的内容差异</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>提交暂存区的文件</li>
+<li>工作目录-&gt;暂存区</li>
 </ul>
-<p>​	暂存操作会为每一个文件计算校验和，然后会把当前版本的<strong>文件快照</strong>保存到Git仓库中（Git使用blob对象来保存他们），最终将校验和加入到暂存区等待提交。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit</span><br><span class="line"># -a 提交所有已跟踪的文件</span><br><span class="line"># -m 备注信息</span><br><span class="line"># --amend 重新提交，替换掉之前的记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add &lt;filename&gt;</span><br><span class="line">git add * # 将当前目录下的所有文件到暂存区，纳入版本控制</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>删除Git仓库中的文件</li>
+<li>查看状态</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm &lt;filename/dir&gt; # 使用该命令记录此次移除的操作，告诉仓库删除了文件</span><br><span class="line"># -f 删除之前修改过或暂存区文件</span><br><span class="line"># --cached 保存工作目录中的文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>重命名</li>
+<li>删除文件</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git move # 对暂存区中的文件进行重命名</span><br><span class="line"># git move file_from file_to</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git rm &lt;filename&gt; # 使用该命令记录此次移除的操作，告诉仓库删除了文件</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>查看提交（commit）历史</li>
+<li>重命名文件</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log # 按先后顺序列出所有的提交记录</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p> –pretty&#x3D;format常用的选项</p>
-</blockquote>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506173430226.png" alt="image-20230506173430226"></p>
-<blockquote>
-<p>git log常用选项</p>
-</blockquote>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506173606903.png" alt="image-20230506173606903"></p>
-<blockquote>
-<p>限制git log输出的选项</p>
-</blockquote>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506173948342.png" alt="image-20230506173948342"></p>
-<ul>
-<li>取消暂存的文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git move old_name new_name</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>撤销对文件的修改</li>
+<li>提交历史</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git log # 按先后顺序列出所有的提交记录</span><br><span class="line"># --author=XXX 只看某个人的提交记录</span><br><span class="line"># --name-status 看看哪些文件修改了</span><br></pre></td></tr></table></figure>
 
-<br />
+<ul>
+<li>暂存区-&gt;本地仓库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git commit</span><br><span class="line"># -m 备注信息</span><br><span class="line"># --amend 重新提交，替换掉之前的记录</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-远程仓库"><a href="#3-远程仓库" class="headerlink" title="3. 远程仓库"></a>3. 远程仓库</h2><h3 id="3-1-查看远程仓库"><a href="#3-1-查看远程仓库" class="headerlink" title="3.1 查看远程仓库"></a>3.1 查看远程仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote</span><br><span class="line">git remote -v # 显示需要读写远程仓库使用的Git保存的简写与其对应的URL</span><br></pre></td></tr></table></figure>
+<ul>
+<li>版本回退</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD^ # 回退到上一版本 </span><br><span class="line">git reset --hard HEAD^^ # 回退到上上版本 </span><br><span class="line">git reset --hard HEAD~100 # 回退到前100个版本 </span><br><span class="line">git reset --hard [版本号] # 回退到固定版本号 </span><br><span class="line">git reflog # 记录每一次的命令（可以查看版本号）</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-2-添加远程仓库"><a href="#3-2-添加远程仓库" class="headerlink" title="3.2 添加远程仓库"></a>3.2 添加远程仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add &lt;shortname&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<p><code>--mixed</code>：用于重置暂存区的文件与指定的回退的版本的提交(commit)保持一致，工作区文件内容保持不变。</p>
+<p><code>--soft</code>：参数用于回退到某个版本，暂存区不会重置，工作区也不会改，版本回退（git log 版本截止到回退的版本）</p>
+<p><code>--hard</code>：参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到指定的回退版本，并删除之前的所有信息提交。</p>
+<ul>
+<li>添加远程仓库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote add origin &lt;server&gt; # 添加远程仓库</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-3-从远程仓库中抓取与拉取"><a href="#3-3-从远程仓库中抓取与拉取" class="headerlink" title="3.3 从远程仓库中抓取与拉取"></a>3.3 从远程仓库中抓取与拉取</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch &lt;remote&gt; # 访问远程仓库，拉取我们还没有的数据</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看远程仓库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-4-推送到远程仓库"><a href="#3-4-推送到远程仓库" class="headerlink" title="3.4 推送到远程仓库"></a>3.4 推送到远程仓库</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看远程仓库信息</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-5-查看远程仓库信息"><a href="#3-5-查看远程仓库信息" class="headerlink" title="3.5 查看远程仓库信息"></a>3.5 查看远程仓库信息</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>远程仓库的重命名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote rename old_name new_name</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-6-远程仓库的重命名与移除"><a href="#3-6-远程仓库的重命名与移除" class="headerlink" title="3.6 远程仓库的重命名与移除"></a>3.6 远程仓库的重命名与移除</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote rename</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推送文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 
-<br />
+<ul>
+<li>获取更新</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git fetch origin</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-标签与别名"><a href="#4-标签与别名" class="headerlink" title="4. 标签与别名"></a>4. 标签与别名</h2><p>​	标签可以简单的理解为版本号。</p>
-<h3 id="4-1-标签"><a href="#4-1-标签" class="headerlink" title="4.1 标签"></a>4.1 标签</h3><ul>
-<li>列出标签</li>
+<ul>
+<li>移除远程仓库</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>列出标签（可以理解为版本号）</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git tag [-l/--list] [&quot;format&quot;]</span><br></pre></td></tr></table></figure>
 
@@ -211,7 +198,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout tagname</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-2-别名"><a href="#4-2-别名" class="headerlink" title="4.2 别名"></a>4.2 别名</h3><ul>
+<ul>
 <li>新建别名</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global alias.别名 命令</span><br><span class="line">git config --global alias.co checkout # 为checkout定义一个名为co的别名，相当于git co等价于git checkout</span><br></pre></td></tr></table></figure>
@@ -221,688 +208,63 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global unset alias.别名</span><br></pre></td></tr></table></figure>
 
-<br />
+<ul>
+<li>新建分支</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-Git分支"><a href="#5-Git分支" class="headerlink" title="5. Git分支"></a>5. Git分支</h2><h3 id="5-1-分支的概念"><a href="#5-1-分支的概念" class="headerlink" title="5.1 分支的概念"></a>5.1 分支的概念</h3><p>​	Git分支的本质是指向提交对象的<strong>可变</strong>指针。Git的默认分支名字是master，在多次提交操作后，我们已经有一个指向<strong>最后</strong>那个提交对象的master分支。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506182450999.png" alt="image-20230506182450999"></p>
-<p>​	分支可以把我们的工作从开发主线上分离开来。在进行提交操作时，Git会保存一个提交对象，该对象对包含一个指向暂存内容快照的指针，还包含了作者的姓名、邮箱、提交时输入的信息以及指向它的父对象的指针。首次提交产生的对象没有父对象。（链表的创建）</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506181322123.png" alt="image-20230506181322123"></p>
-<p>​	当使用<code>git commit</code>进行提交操作时，Git会先计算每一个子目录的校验和，然后在Git仓库中把这些校验和保存为树对象，随后，Git便会创建一个提交对象，它除了包含上面提到的那些信息外，还包含指向这个树对象的指针。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506182102202.png" alt="image-20230506182102202"></p>
-<h3 id="5-2-分支操作"><a href="#5-2-分支操作" class="headerlink" title="5.2 分支操作"></a>5.2 分支操作</h3><h4 id="5-2-1-分支创建"><a href="#5-2-1-分支创建" class="headerlink" title="5.2.1 分支创建"></a>5.2.1 分支创建</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch testing</span><br></pre></td></tr></table></figure>
+<ul>
+<li>切换分支</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout testing # HEAD指向testing分支</span><br></pre></td></tr></table></figure>
 
-<p>​	创建了一个名为testing的分支，它指向当前的提交对象。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506183240246.png" alt="image-20230506183240246"></p>
-<p>​	<strong>存在一个HEAD指针指向当前分支</strong>。可以使用<code>git log --decorate</code>命令查看各个分支指向的对象。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506183514991.png" alt="image-20230506183514991"></p>
-<h4 id="5-2-2-分支切换"><a href="#5-2-2-分支切换" class="headerlink" title="5.2.2 分支切换"></a>5.2.2 分支切换</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout testing # HEAD指向testing分支</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建并切换</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b &lt;newbranchname&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506184223270.png" alt="image-20230506184223270"></p>
-<p>​	再次提交。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506184345166.png" alt="image-20230506184345166"></p>
-<p>​	切换到master分支。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506184408182.png" alt="image-20230506184408182"></p>
-<p>​	项目分叉图。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506184558218.png" alt="image-20230506184558218"></p>
-<h4 id="5-2-3-创建并切换"><a href="#5-2-3-创建并切换" class="headerlink" title="5.2.3 创建并切换"></a>5.2.3 创建并切换</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b &lt;newbranchname&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分支合并</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge &lt;branchname&gt;</span><br><span class="line"># 对于同一个文件同一处的异常进行合并时会产生冲突</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-2-4-分支合并"><a href="#5-2-4-分支合并" class="headerlink" title="5.2.4 分支合并"></a>5.2.4 分支合并</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git merge &lt;branchname&gt;</span><br><span class="line"># 对于同一个文件同一处的异常进行合并时会产生冲突</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改主分支名称</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-2-5-删除分支"><a href="#5-2-5-删除分支" class="headerlink" title="5.2.5 删除分支"></a>5.2.5 删除分支</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d &lt;branchname&gt;</span><br><span class="line"># 使用-D强制删除，分支未合并时使用</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除分支</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch -d &lt;branchname&gt;</span><br><span class="line"># 使用-D强制删除，分支未合并时使用</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-2-6-查看分支列表"><a href="#5-2-6-查看分支列表" class="headerlink" title="5.2.6 查看分支列表"></a>5.2.6 查看分支列表</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch # 带*号的是当前分支</span><br><span class="line">git branch -v # 查看每个分支最后一次提交</span><br><span class="line"># --merged/--no-merged 过滤是否合并到当前分支的分支</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看分支列表</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git branch # 带*号的是当前分支</span><br><span class="line">git branch -v # 查看每个分支最后一次提交</span><br><span class="line"># --merged/--no-merged 过滤是否合并到当前分支的分支</span><br></pre></td></tr></table></figure>
 
-<br />
-
-<h3 id="5-3-分支开发工作流"><a href="#5-3-分支开发工作流" class="headerlink" title="5.3 分支开发工作流"></a>5.3 分支开发工作流</h3><h4 id="5-3-1-长期分支"><a href="#5-3-1-长期分支" class="headerlink" title="5.3.1 长期分支"></a>5.3.1 长期分支</h4><p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506192055775.png" alt="image-20230506192055775"></p>
-<h4 id="5-3-2-主题分支"><a href="#5-3-2-主题分支" class="headerlink" title="5.3.2 主题分支"></a>5.3.2 主题分支</h4><p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506192141201.png" alt="image-20230506192141201"></p>
-<br />
-
-<h3 id="5-4-远程分支"><a href="#5-4-远程分支" class="headerlink" title="5.4 远程分支"></a>5.4 远程分支</h3><p>​	远程分支是对远程仓库的引用。以<code>&lt;remote&gt;/&lt;branch&gt;</code>的形式命名。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506192620001.png" alt="image-20230506192620001"></p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506192726076.png" alt="image-20230506192726076"></p>
-<p>​	可以使用<code>git fetch &lt;remote&gt;</code>命令抓取远程仓库中本地没有的数据然后让我们手动合并。可以使用<code>git pull</code>命令对抓取的数据进行自动合并。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506192826718.png" alt="image-20230506192826718"></p>
-<p>​	当抓取到新的远程跟踪分支时，本地不会自动生成一份可编辑的副本。可以运行<code>git merge origin/serverfix</code>将这些工作合并到当前所在的分支。如果想要在自己的serverfix分支上工作，可以将其建立在远程跟踪分支之上。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout -b serverfix origin/serverfix</span><br></pre></td></tr></table></figure>
-
-<p>​	推送分支。</p>
+<ul>
+<li>推送分支</li>
+</ul>
+<p>远程分支是对远程仓库的引用。以<code>&lt;remote&gt;/&lt;branch&gt;</code>的形式命名。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br><span class="line"># git push &lt;remote&gt; &lt;localbranch&gt;:&lt;remotebranch&gt;</span><br><span class="line"># 将localbranch分支推送到remotebranch分支</span><br><span class="line"># git config --global credential.helper cache</span><br><span class="line"># 避免我们每次推送时都要被询问用户名和密码[URL形式推送]</span><br></pre></td></tr></table></figure>
 
-<p>​	从一个远程跟踪分支检出一个本地分支会自动创建所谓的”跟踪分支“。</p>
-<p>​	删除远程分支。</p>
+<ul>
+<li>删除远程分支</li>
+</ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; --delete serverfix</span><br></pre></td></tr></table></figure>
 
 <br />
 
-<h3 id="5-5-变基"><a href="#5-5-变基" class="headerlink" title="5.5 变基"></a>5.5 变基</h3><p>​	整合不同分支的另一种方法：<code>rebase</code></p>
-<p>​	不同于<code>merge</code>的是，这种合并方法是把某一分支的修改内容合并到另一个分支上。它的原理是先找到两个分支共同的祖先，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底，最后依次将之前另存为临时文件的修改依序应用。</p>
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506195732724.png" alt="image-20230506195732724"></p>
-<p>​	回到master分支上，进行一次合并。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge experient</span><br></pre></td></tr></table></figure>
+<br />
 
-<p><img src="/2023/05/05/Git%E5%AD%A6%E4%B9%A0/image-20230506200013456.png" alt="image-20230506200013456"></p>
-<p><br /><br /></p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><p>廖雪峰老师Git教程：<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000">https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000</a></p>
-</li>
-<li><p>菜鸟教程：<a href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
-</li>
-<li><p>Pro Git：<a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
-</li>
-</ul>
+<h1 id="三、参考"><a href="#三、参考" class="headerlink" title="三、参考"></a>三、参考</h1><p><tt>菜鸟教程：<a href="https://www.runoob.com/git/git-tutorial.html">https://www.runoob.com/git/git-tutorial.html</a></p>
+<p><tt>Pro Git：<a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
+<p><tt>廖雪峰老师Git教程：<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000">https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000</a></p>
+<p><tt>猴子都能懂的Git入门：<a href="https://backlog.com/git-tutorial/cn/">https://backlog.com/git-tutorial/cn/</a></p>
+<p><tt>交互式Git学习：<a href="https://learngitbranching.js.org/?locale=zh_CN">https://learngitbranching.js.org/?locale=zh_CN</a></p>
+<p><tt>码神：<a href="https://mszlu.com/git/01/01.html">https://mszlu.com/git/01/01.html</a></p>
+<p><tt>易百教程：<a href="https://www.yiibai.com/git">https://www.yiibai.com/git</a></p>
 ]]></content>
-      <categories>
-        <category>基础学习</category>
-        <category>编程基础</category>
-        <category>代码管理</category>
-      </categories>
-      <tags>
-        <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP学习</title>
-    <url>/2023/05/05/PHP%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<blockquote>
-<p>PHP是世界上最好的语言<br>PHP手册：<a href="https://www.php.net/manual/zh/index.php">https://www.php.net/manual/zh/index.php</a></p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="0x00-PHP基础"><a href="#0x00-PHP基础" class="headerlink" title="0x00 PHP基础"></a>0x00 PHP基础</h1><h2 id="1-PHP基础语法"><a href="#1-PHP基础语法" class="headerlink" title="1. PHP基础语法"></a>1. PHP基础语法</h2><h3 id="1-1-PHP标签风格"><a href="#1-1-PHP标签风格" class="headerlink" title="1.1 PHP标签风格"></a>1.1 PHP标签风格</h3><p>​	当解析一个文件时，PHP 会寻找起始和结束标记，也就是 *<?php* 和 *?>*，这告诉 PHP 开始和停止解析二者之间的代码。此种解析方式使得 PHP 可以被嵌入到各种不同的文档中去，而任何起始和结束标记之外的部分都会被 PHP 解析器忽略。</p>
-<p>​	处于条件语句中间时，此时 PHP 解释器会根据条件判断来决定哪些输出，哪些跳过。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 高级分离术</span><br><span class="line">&lt;?php $expression=true;?&gt;</span><br><span class="line">&lt;?php if ($expression == true): ?&gt;</span><br><span class="line">  This will show if the expression is true.</span><br><span class="line">&lt;?php else: ?&gt;</span><br><span class="line">  Otherwise this will show.</span><br><span class="line">&lt;?php endif; ?&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230508221936321.png" alt="image-20230508221936321"></p>
-<ul>
-<li>script风格</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;</span><br><span class="line">	php代码</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">// PHP7中不再支持</span><br><span class="line">// PHP语句以分号结尾,一段 PHP 代码中的结束标记隐含表示了一个分号</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230508181353999.png" alt="image-20230508181353999"></p>
-<ul>
-<li>xml风格</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	PHP代码</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">// 纯php文件中可以省略结尾?&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>简短风格</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?</span><br><span class="line">	PHP代码</span><br><span class="line">?&gt;</span><br><span class="line">// 需要在php.ini中启用short_open_tag选项</span><br><span class="line"></span><br><span class="line">&lt;?=1?&gt; 等价于 &lt;?php echo 1;?&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>ASP风格</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	PHP代码</span><br><span class="line">%&gt;</span><br><span class="line">// 该标记风格在PHP7中已经不再支持，需要在配置文件中启用asp_tags选项</span><br></pre></td></tr></table></figure>
-
-<p>​	</p>
-<h3 id="1-2-注释符"><a href="#1-2-注释符" class="headerlink" title="1.2 注释符"></a>1.2 注释符</h3><p>​	注释部分不会被执行。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">单行注释：// comments</span><br><span class="line">		# comments</span><br><span class="line">多行注释：/* comments */</span><br><span class="line"></span><br><span class="line">//单行注释仅仅注释到行末或者当前的 PHP 代码块</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230508222752863.png" alt="image-20230508222752863"></p>
-<h3 id="1-3-变量"><a href="#1-3-变量" class="headerlink" title="1.3 变量"></a>1.3 变量</h3><h4 id="1-3-1-声明变量"><a href="#1-3-1-声明变量" class="headerlink" title="1.3.1 声明变量"></a>1.3.1 声明变量</h4><p>​	php是一门弱类型语言，声明变量时不用指定其类型。</p>
-<p>​	变量命名规则：变量须以<code>$</code>开头作为标识，其他部分由字母、数字以及下划线组成，不能以数字开头且区分大小写。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = 1;</span><br><span class="line">	var_dump($a);</span><br><span class="line">	$b = &#x27;1&#x27;;</span><br><span class="line">	var_dump($b);</span><br><span class="line">	$c = array(&#x27;1&#x27;);</span><br><span class="line">	var_dump($c);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230508205238955.png" alt="image-20230508205238955"></p>
-<h4 id="1-3-2-变量赋值与引用"><a href="#1-3-2-变量赋值与引用" class="headerlink" title="1.3.2 变量赋值与引用"></a>1.3.2 变量赋值与引用</h4><p>​	php中使用<code>=</code>赋值，使用<code>&amp;</code>引用（使用不同的名字访问同一个变量内容）。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = 1;</span><br><span class="line">	$b = $a;</span><br><span class="line">	echo &#x27;$a = &#x27;.$a;</span><br><span class="line">	echo &#x27;$b = &#x27;.$b;</span><br><span class="line">	$c = &amp;$a;</span><br><span class="line">	$c = 2;</span><br><span class="line">	echo $a;</span><br><span class="line">	echo $c;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-3-3-可变变量"><a href="#1-3-3-可变变量" class="headerlink" title="1.3.3 可变变量"></a>1.3.3 可变变量</h4><ul>
-<li>可变变量</li>
-</ul>
-<p>​	一个变量的值作为另一个变量的名称。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = 1&#x27;;</span><br><span class="line">    $b = &#x27;a&#x27;;</span><br><span class="line">    echo $$b; // 可写成$&#123;$b&#125;,用花括号界定变量名</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230508212126608.png" alt="image-20230508212126608"></p>
-<h4 id="1-3-4-变量作用域"><a href="#1-3-4-变量作用域" class="headerlink" title="1.3.4 变量作用域"></a>1.3.4 变量作用域</h4><p>​	变量的作用域标识其有效性范围。</p>
-<ul>
-<li>全局变量：定义在函数之外，全局变量默认不能被函数内访问，如需访问需添加<code>global</code>关键字标识或者访问<code>$GLOBALS</code>数组。</li>
-<li>超全局变量：以<code>$_</code>开头，如$_GET、$_POST等，函数内部和函数外部都能访问。</li>
-<li>局部变量：定义在函数之内。函数之外访问局部变量可以使用<code>global</code>关键字或者直接将该值返回。</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230508214504777.png" alt="image-20230508214504777"></p>
-<h4 id="1-3-5-静态变量"><a href="#1-3-5-静态变量" class="headerlink" title="1.3.5 静态变量"></a>1.3.5 静态变量</h4><p>​	使用<code>static</code>标识静态变量，其生存期和程序同步。</p>
-<h4 id="1-3-6-变量检测与删除"><a href="#1-3-6-变量检测与删除" class="headerlink" title="1.3.6 变量检测与删除"></a>1.3.6 变量检测与删除</h4><p>​	使用<code>isset()</code>检测变量是否存在，使用<code>unset()</code>将变量删除。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = 1;</span><br><span class="line">	var_dump($a);</span><br><span class="line">	unset($a);</span><br><span class="line">	var_dump($a);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>​	如果需要在函数内部删除全局变量，需要使用<code>$GLOBALS</code>数组。</p>
-<p>​	参考：<a href="https://www.runoob.com/php/php-unset-function.html">https://www.runoob.com/php/php-unset-function.html</a></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$myVariable = &quot;Hello World!&quot;;</span><br><span class="line"></span><br><span class="line">	function myFunction() &#123;</span><br><span class="line">		unset($GLOBALS[&#x27;myVariable&#x27;]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	myFunction();</span><br><span class="line">	var_dump($myVariable);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-4-数据类型"><a href="#1-4-数据类型" class="headerlink" title="1.4 数据类型"></a>1.4 数据类型</h3><p>​	可以使用<code>var_dump()</code>函数检索表达式的值和类型，使用<code>get_debug_type()</code>函数检索表达式的类型，使用<code>is_type()</code>函数检查表达式是否属于特定类型。<code>get_debug_type()</code>在8.0之前不可用可以改用<code>gettype()</code>函数。</p>
-<h4 id="1-4-1-整型"><a href="#1-4-1-整型" class="headerlink" title="1.4.1 整型"></a>1.4.1 整型</h4><ul>
-<li>定义</li>
-</ul>
-<p>​	可以是二进制(<code>0b</code>开头)、八进制(<code>0</code>开头)、十进制以及十六进制(<code>0x</code>开头)。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $a = 1234; // 十进制数</span><br><span class="line">    $a = 0123; // 八进制数 (等于十进制 83)</span><br><span class="line">    $a = 0o123; // 八进制数 (PHP 8.1.0 起)</span><br><span class="line">    $a = 0x1A; // 十六进制数 (等于十进制 26)</span><br><span class="line">    $a = 0b11111111; // 二进制数字 (等于十进制 255)</span><br><span class="line">    $a = 1_234_567; // 整型数值 (PHP 7.4.0 以后)</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>integer格式</li>
-</ul>
-<p>​	整型数的字长和平台有关，尽管通常最大值是大约二十亿（32 位有符号）。64 位平台下的最大值通常是大约 9E18，除了 Windows 下 PHP 7 以前的版本，总是 32 位的。 PHP 不支持无符号的 integer。自PHP 5.0.5后，Integer 值的字长可以用常量<code>PHP_INT_SIZE</code>来表示，自 PHP 4.4.0 和 PHP 5.0.5后，最大值可以用常量 <code>PHP_INT_MAX</code>来表示，最小值可以在 PHP 7.0.0 及以后的版本中用常量 <code>PHP_INT_MIN</code> 表示。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">decimal     : [1-9][0-9]*</span><br><span class="line">            | 0</span><br><span class="line"></span><br><span class="line">hexadecimal : 0[xX][0-9a-fA-F]+</span><br><span class="line"></span><br><span class="line">octal       : 0[0-7]+</span><br><span class="line"></span><br><span class="line">binary      : 0b[01]+</span><br><span class="line"></span><br><span class="line">integer     : [+-]?decimal</span><br><span class="line">            | [+-]?hexadecimal</span><br><span class="line">            | [+-]?octal</span><br><span class="line">            | [+-]?binary</span><br></pre></td></tr></table></figure>
-
-<p>​	注意：PHP 7 以前的版本里，如果向八进制数传递了一个非法数字（即 8 或 9），则后面其余数字会被忽略。PHP 7 以后，会产生 Parse Error。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509204503574.png" alt="image-20230509204503574"></p>
-<ul>
-<li>整数溢出</li>
-</ul>
-<p>​	溢出后被当作<code>float</code>。</p>
-<ul>
-<li>类型转换</li>
-</ul>
-<p>​	使用<code>(int)</code>或者<code>(integer)</code>强制转换，或者通过函数<code>intval()</code>将一个值转换成整型。将 resource 转换成 integer 时， 结果会是 PHP 运行时为 resource 分配的唯一资源号。</p>
-<table>
-<thead>
-<tr>
-<th align="center">转换前</th>
-<th align="center">转换后</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">false、true</td>
-<td align="center">0、1</td>
-</tr>
-<tr>
-<td align="center">浮点型</td>
-<td align="center">向下取整</td>
-</tr>
-</tbody></table>
-<p>​	注意：PHP 7.0.0 起，NaN 和 Infinity 在转换成 integer 时，不再是 undefined 或者依赖于平台，而是都会变成零。</p>
-<h4 id="1-4-2-浮点型"><a href="#1-4-2-浮点型" class="headerlink" title="1.4.2 浮点型"></a>1.4.2 浮点型</h4><ul>
-<li>实例</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $a = 1.234; </span><br><span class="line">    $b = 1.2e3; </span><br><span class="line">    $c = 7E-10;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>定义</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LNUM          [0-9]+</span><br><span class="line">DNUM          ([0-9]*[\.]&#123;LNUM&#125;) | (&#123;LNUM&#125;[\.][0-9]*)</span><br><span class="line">EXPONENT_DNUM [+-]?((&#123;LNUM&#125; | &#123;DNUM&#125;) [eE][+-]? &#123;LNUM&#125;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>NAN</li>
-</ul>
-<p>​	某些数学运算会产生一个由常量 NAN 所代表的结果。此结果代表着一个在浮点数运算中未定义或不可表述的值。任何拿此值与其它任何值（除了 TRUE）进行的松散或严格比较的结果都是 FALSE。</p>
-<p>​	由于 NAN 代表着任何不同值，不应拿 NAN 去和其它值进行比较，包括其自身，应该用 is_nan() 来检查。</p>
-<h4 id="1-4-3-布尔型"><a href="#1-4-3-布尔型" class="headerlink" title="1.4.3 布尔型"></a>1.4.3 布尔型</h4><ul>
-<li>定义</li>
-</ul>
-<p>​	<code>true</code>和<code>flase</code>。（不区分大小写）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$bool = TRue;</span><br><span class="line">	var_dump($bool);</span><br><span class="line">?&gt;</span><br><span class="line">// 输出 bool(true)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>强制转换</li>
-</ul>
-<p>​	使用<code>(bool)</code>或者<code>(boolean)</code>进行强制转换。</p>
-<p>​	当转换成boolean型时，以下值被认为是false。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">布尔值 FALSE 本身</span><br><span class="line">整型值 0（零）</span><br><span class="line">浮点型值 0.0（零）</span><br><span class="line">空字符串，以及字符串 &quot;0&quot;</span><br><span class="line">不包括任何元素的数组</span><br><span class="line">特殊类型 NULL（包括尚未赋值的变量）</span><br><span class="line">从空标记生成的 SimpleXML 对象</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="1-4-4-字符串相关"><a href="#1-4-4-字符串相关" class="headerlink" title="1.4.4 字符串相关"></a>1.4.4 字符串相关</h4><ul>
-<li>字符串</li>
-</ul>
-<p>​	由<code>&#39;&#39;</code>单引号或者<code>&quot;&quot;</code>双引号括起来的称为字符串。单引号对于其内部的变量不进行解析，双引号对于其内部的变量进行解析。当 PHP 解析器遇到一个美元符号（*$*）时，它会和其它很多解析器一样，去组合尽量多的标识以形成一个合法的变量名。可以用花括号来明确变量名的界线。</p>
-<p>​	双引号，内部可以使用特殊字符。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = 1;</span><br><span class="line">	echo &quot;This is &#123;$a&#125;&quot;;</span><br><span class="line">	// echo &quot;This is $&#123;a&#125;&quot;;</span><br><span class="line">?&gt;</span><br><span class="line">// 输出1</span><br></pre></td></tr></table></figure>
-
-<p>​	单引号</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$a = 1;</span><br><span class="line">	echo &#x27;$a&#x27;;</span><br><span class="line">?&gt;</span><br><span class="line">// 输出$a</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>字符串的存取和修改</li>
-</ul>
-<p>​	下标从0开始，也可以使用花括号访问，例如<code>$str&#123;1&#125;</code>。</p>
-<ul>
-<li>响应头设置</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	header(&#x27;Conten-Type: text/html; charset=utf-8&#x27;);</span><br><span class="line">?&gt;</span><br><span class="line">// 解决乱码问题</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>转义</li>
-</ul>
-<p>​	使用<code>\</code>进行转义。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509211633775.png" alt="image-20230509211633775"></p>
-<ul>
-<li>定界符</li>
-</ul>
-<p>​	<code>heredoc结构</code>：类似双引号，进行解析操作。结束时所引用的标识符必须在该行的第一列。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$string = &lt;&lt;&lt;str</span><br><span class="line">	&quot;Hello World!!&quot;</span><br><span class="line">str;</span><br><span class="line">	echo $string;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509212435961.png" alt="image-20230509212435961"></p>
-<p>​	<code>nowdoc结构</code> ：类似单引号字符串，不进行解析操作。Nowdoc 结构是在 PHP 5.3.0 中加入的。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$string = &lt;&lt;&lt;&#x27;str&#x27; //标识符使用单引号括起来</span><br><span class="line">	&quot;Hello World!!&quot;</span><br><span class="line">str;</span><br><span class="line">	echo $string;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>连接符</li>
-</ul>
-<p>​	使用<code>.</code>点号连接。</p>
-<ul>
-<li>字符串函数</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center">函数名</th>
-<th align="center">作用</th>
-<th align="center">试例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">strlen()</td>
-<td align="center">求字符串长度</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">mb_strlen()</td>
-<td align="center">求字符串长度，可指定字符编码</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">trim()</td>
-<td align="center">头尾去空</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">ltrim()</td>
-<td align="center">头去空</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">rtrim()</td>
-<td align="center">尾去空</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">strtolower()</td>
-<td align="center">转化为小写</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">strtoupper()</td>
-<td align="center">转化为大写</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">ucfirst()</td>
-<td align="center">首字母大写</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">ucwords()</td>
-<td align="center">每个单词首字母大写</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">md5()</td>
-<td align="center">求字符串的md5值</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">explode()</td>
-<td align="center">字符串变数组</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">implode()</td>
-<td align="center">数组变字符串</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">substr()</td>
-<td align="center">截取字符串</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">strstr()</td>
-<td align="center">查找字符串在另一字符串中是否存在，如果是，返回该字符串及剩余部分，否则返回 FALSE</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">strrchr()</td>
-<td align="center">查找字符串在另一个字符串中最后一次出现的位置，并返回从该位置到字符串结尾的所有字符</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">strpos()</td>
-<td align="center">查找字符串首次出现的位置</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">strrpos()</td>
-<td align="center">查找字符串最后出现的位置</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">str_replace()</td>
-<td align="center">替换字符串</td>
-<td align="center"></td>
-</tr>
-</tbody></table>
-<p>​	使用<code>strlen($string)</code>函数求字符串长度；</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509213831081.png" alt="image-20230509213831081"></p>
-<p>​	使用<code>mb_strlen($string, $index)</code>函数指定字符编码求字符串长度；</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509213910750.png" alt="image-20230509213910750"></p>
-<p>​	使用<code>ltrim()</code>对字符串前部进行去空操作，使用<code>rtrim()</code>函数对字符串尾部进行去空操作，使用<code>trim()</code>函数对字符串进行前后去空操作；可以指定字符集进行截取。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509214636635.png" alt="image-20230509214636635"></p>
-<p>​	使用<code>strtolower()</code>将字符串转化为小写，使用<code>strtoupper()</code>将字符串转化为大写。使用<code>ucfirst()</code>将首字母转化为大写，使用<code>ucwords()</code>将字符串每个单词的首字母转化为大写。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509215502827.png" alt="image-20230509215502827"></p>
-<p>​	使用<code>md5()</code>函数求字符串的md5值。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509215950025.png" alt="image-20230509215950025"></p>
-<p>​	使用<code>explode()</code>函数用一个字符串来分隔另一个字符串，字符串转化为数组。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509220236953.png" alt="image-20230509220236953"></p>
-<p>​	使用<code>implode()</code>函数将数组变成字符串。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509220501573.png" alt="image-20230509220501573"></p>
-<p>​	使用<code>substr()</code>函数截取字符串。可以使用<code>mb_substr()</code>函数截取字符串后以某种编码返回。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509220825934.png" alt="image-20230509220825934"></p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230509221517600.png" alt="image-20230509221517600"></p>
-<p>​		使用<code>strstr()</code>函数查找字符串首次出现。（从首次出现的地方开始往后截取）</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514214603773.png" alt="image-20230514214603773"></p>
-<p>​	使用<code>strrchr()</code>函数从末尾截取字符串。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514215258274.png" alt="image-20230514215258274"></p>
-<p>​	使用<code>strpos()</code>、<code>strrpos()</code>函数取得指定字符的下标。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514215508798.png" alt="image-20230514215508798"></p>
-<p>​	使用<code>str_replace()</code>函数替换字符串。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514215933147.png" alt="image-20230514215933147"></p>
-<p>​	使用<code>is_null()</code>函数判断是否为空值。定义未声明、手动赋值为null或者使用<code>unset()</code>函数消除的1其值都为null。可以使用<code>(unset)</code>$var将一个变量转换为null，将不会删除该变量或者unset其值，仅仅返回null而已。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514220415050.png" alt="image-20230514220415050"></p>
-<ul>
-<li>花括号语法</li>
-</ul>
-<p>​	任何具有 string 表达的标量变量，数组单元或对象属性都可使用此语法。</p>
-<p>​	<strong>函数、方法、静态类变量和类常量只有在 PHP 5 以后才可在 <em>{$}</em> 中使用</strong>。然而，只有在该字符串被定义的命名空间中才可以将其值作为变量名来访问。只单一使用花括号 (<em>{}</em>) 无法处理从函数或方法的返回值或者类常量以及类静态变量的值。</p>
-<p>​	 <code>$&#123;&#125;</code> 是一种特殊的语法，表示将其中的表达式求值后再插入到字符串中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// 显示所有错误</span><br><span class="line">error_reporting(E_ALL);</span><br><span class="line"></span><br><span class="line">$great = &#x27;fantastic&#x27;;</span><br><span class="line"></span><br><span class="line">// 无效，输出: This is &#123; fantastic&#125;</span><br><span class="line">echo &quot;This is &#123; $great&#125;&quot;;</span><br><span class="line"></span><br><span class="line">// 有效，输出： This is fantastic</span><br><span class="line">echo &quot;This is &#123;$great&#125;&quot;;</span><br><span class="line">echo &quot;This is $&#123;great&#125;&quot;;</span><br><span class="line"></span><br><span class="line">// 有效</span><br><span class="line">echo &quot;This square is &#123;$square-&gt;width&#125;00 centimeters broad.&quot;; </span><br><span class="line"></span><br><span class="line">// 有效，只有通过花括号语法才能正确解析带引号的键名</span><br><span class="line">echo &quot;This works: &#123;$arr[&#x27;key&#x27;]&#125;&quot;;</span><br><span class="line"></span><br><span class="line">// 有效</span><br><span class="line">echo &quot;This works: &#123;$arr[4][3]&#125;&quot;;</span><br><span class="line"></span><br><span class="line">// 这是错误的表达式，因为就象 $foo[bar] 的格式在字符串以外也是错的一样。</span><br><span class="line">// 换句话说，只有在 PHP 能找到常量 foo 的前提下才会正常工作；这里会产生一个</span><br><span class="line">// E_NOTICE (undefined constant) 级别的错误。</span><br><span class="line">echo &quot;This is wrong: &#123;$arr[foo][3]&#125;&quot;; </span><br><span class="line"></span><br><span class="line">// 有效，当在字符串中使用多重数组时，一定要用括号将它括起来</span><br><span class="line">echo &quot;This works: &#123;$arr[&#x27;foo&#x27;][3]&#125;&quot;;</span><br><span class="line"></span><br><span class="line">// 有效</span><br><span class="line">echo &quot;This works: &quot; . $arr[&#x27;foo&#x27;][3];</span><br><span class="line"></span><br><span class="line">echo &quot;This works too: &#123;$obj-&gt;values[3]-&gt;name&#125;&quot;;</span><br><span class="line"></span><br><span class="line">echo &quot;This is the value of the var named $name: &#123;$&#123;$name&#125;&#125;&quot;;</span><br><span class="line"></span><br><span class="line">echo &quot;This is the value of the var named by the return value of getName(): &#123;$&#123;getName()&#125;&#125;&quot;;</span><br><span class="line"></span><br><span class="line">echo &quot;This is the value of the var named by the return value of \$object-&gt;getName(): &#123;$&#123;$object-&gt;getName()&#125;&#125;&quot;;</span><br><span class="line"></span><br><span class="line">// 无效，输出： This is the return value of getName(): &#123;getName()&#125;</span><br><span class="line">echo &quot;This is the return value of getName(): &#123;getName()&#125;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>类型转换</li>
-</ul>
-<p>​	可以使用<code>(string)</code>或者<code>strval()</code>函数来转变为字符串。</p>
-<p>​	如果字符串没有包含 ‘.’，’e’ 或 ‘E’ 并且其数字值在整型的范围之内（由 PHP_INT_MAX 所定义），该字符串将被当成 integer 来取值。其它所有情况下都被作为 float 来取值。该字符串的开始部分决定了它的值。如果该字符串以合法的数值开始，则使用该数值。否则其值为 0（零）。合法数值由可选的正负号，后面跟着一个或多个数字（可能有小数点），再跟着可选的指数部分。指数部分由 ‘e’ 或 ‘E’ 后面跟着一个或多个数字构成。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    $foo = 1 + &quot;10.5&quot;;                // $foo is float (11.5)</span><br><span class="line">    $foo = 1 + &quot;-1.3e3&quot;;              // $foo is float (-1299)</span><br><span class="line">    $foo = 1 + &quot;bob-1.3e3&quot;;           // $foo is integer (1)</span><br><span class="line">    $foo = 1 + &quot;bob3&quot;;                // $foo is integer (1)</span><br><span class="line">    $foo = 1 + &quot;10 Small Pigs&quot;;       // $foo is integer (11)</span><br><span class="line">    $foo = 4 + &quot;10.2 Little Piggies&quot;; // $foo is float (14.2)</span><br><span class="line">    $foo = &quot;10.0 pigs &quot; + 1;          // $foo is float (11)</span><br><span class="line">    $foo = &quot;10.0 pigs &quot; + 1.0;        // $foo is float (11)     </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-5-常量"><a href="#1-5-常量" class="headerlink" title="1.5 常量"></a>1.5 常量</h3><h4 id="1-5-1-定义"><a href="#1-5-1-定义" class="headerlink" title="1.5.1 定义"></a>1.5.1 定义</h4><p>​	使用<code>const</code>或者<code>define</code>进行定义。可以在程序的任何地方访问常量。</p>
-<ul>
-<li>使用<code>define</code>进行定义</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	define(&#x27;coutry&#x27;, &#x27;china&#x27;);</span><br><span class="line">	echo coutry;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514220911657.png" alt="image-20230514220911657"></p>
-<ul>
-<li>使用<code>const</code>进行定义</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	const coutry = &#x27;china&#x27;;</span><br><span class="line">	echo coutry;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514221014147.png" alt="image-20230514221014147"></p>
-<h4 id="1-5-2-常见系统常量"><a href="#1-5-2-常见系统常量" class="headerlink" title="1.5.2 常见系统常量"></a>1.5.2 常见系统常量</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">__DIR__ # 文件所咋目录</span><br><span class="line">__FILE__ # 文件路径</span><br><span class="line">__LINE__ # 程序代码行号</span><br><span class="line">PHP_VERSION # php版本</span><br><span class="line">PHP_OS # 显示服务器的操作系统版本</span><br><span class="line">TRUE/FLASE # 布尔值</span><br><span class="line">__FUNCTION__ # 函数名称</span><br><span class="line">__METHOD__ # 方法名称</span><br><span class="line">__CLASS__ # 类名称</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-6-运算符"><a href="#1-6-运算符" class="headerlink" title="1.6 运算符"></a>1.6 运算符</h3><h4 id="1-6-1-算术运算符"><a href="#1-6-1-算术运算符" class="headerlink" title="1.6.1 算术运算符"></a>1.6.1 算术运算符</h4><p>​	加<code>+</code>、减<code>-</code>、乘<code>*</code>、除<code>/</code>、取余<code>%</code>、求幂<code>**</code></p>
-<h4 id="1-6-2-自增减运算符"><a href="#1-6-2-自增减运算符" class="headerlink" title="1.6.2 自增减运算符"></a>1.6.2 自增减运算符</h4><p>​	自增<code>++</code>、自减<code>--</code></p>
-<h4 id="1-6-3-赋值运算符"><a href="#1-6-3-赋值运算符" class="headerlink" title="1.6.3 赋值运算符"></a>1.6.3 赋值运算符</h4><p>​	赋值<code>=</code></p>
-<p>​	其他赋值<code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>、<code>**=</code>、<code>.=</code></p>
-<h4 id="1-6-4-比较运算符"><a href="#1-6-4-比较运算符" class="headerlink" title="1.6.4 比较运算符"></a>1.6.4 比较运算符</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==</span><br><span class="line">===</span><br><span class="line">!=</span><br><span class="line">!==</span><br><span class="line">&gt;</span><br><span class="line">&gt;=</span><br><span class="line">&lt;</span><br><span class="line">&lt;=</span><br><span class="line">&lt;&gt;</span><br><span class="line">&lt;=&gt;：太空船运算符，当$a小于、等于、大于$b时 分别返回一个小于、等于、大于0的integer 值。 PHP7开始提供.</span><br><span class="line">$a ?? $b ?? $c：合并运算符，从左往右第一个存在且不为 NULL 的操作数。如果都没有定义且不为 NULL，则返回 NULL。PHP7开始提供。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>太空船运算符：小于时返回-1、等于时返回0、大于时返回1</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230514223657495.png" alt="image-20230514223657495"></p>
-<h4 id="1-6-5-逻辑运算符"><a href="#1-6-5-逻辑运算符" class="headerlink" title="1.6.5 逻辑运算符"></a>1.6.5 逻辑运算符</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&amp;&amp;</span><br><span class="line">||</span><br><span class="line">!</span><br><span class="line">and</span><br><span class="line">or</span><br><span class="line">xor</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="1-6-6-条件运算符"><a href="#1-6-6-条件运算符" class="headerlink" title="1.6.6 条件运算符"></a>1.6.6 条件运算符</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a?b:c</span><br><span class="line">a?:b</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-7-流程控制"><a href="#1-7-流程控制" class="headerlink" title="1.7 流程控制"></a>1.7 流程控制</h3><h4 id="1-7-1-选择结构"><a href="#1-7-1-选择结构" class="headerlink" title="1.7.1 选择结构"></a>1.7.1 选择结构</h4><ul>
-<li>if</li>
-<li>if..else</li>
-<li>if..elseif…else</li>
-<li>switch…case</li>
-</ul>
-<h4 id="1-7-2-循环结构"><a href="#1-7-2-循环结构" class="headerlink" title="1.7.2 循环结构"></a>1.7.2 循环结构</h4><ul>
-<li>while</li>
-<li>do..while</li>
-<li>for</li>
-<li>foreach</li>
-</ul>
-<h4 id="1-7-3-循环控制"><a href="#1-7-3-循环控制" class="headerlink" title="1.7.3 循环控制"></a>1.7.3 循环控制</h4><ul>
-<li>break</li>
-<li>continue</li>
-</ul>
-<h3 id="1-7-文件包含"><a href="#1-7-文件包含" class="headerlink" title="1.7 文件包含"></a>1.7 文件包含</h3><h4 id="1-7-1-定义"><a href="#1-7-1-定义" class="headerlink" title="1.7.1 定义"></a>1.7.1 定义</h4><ul>
-<li>include</li>
-<li>include_once</li>
-<li>require</li>
-<li>require_once</li>
-</ul>
-<blockquote>
-<p>语句前加上@可以屏蔽报错！</p>
-</blockquote>
-<h4 id="1-7-2-命名空间"><a href="#1-7-2-命名空间" class="headerlink" title="1.7.2 命名空间"></a>1.7.2 命名空间</h4><p>​	解决冲突。</p>
-<ul>
-<li>试例</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- mian.php代码</span><br><span class="line">&lt;?php</span><br><span class="line">	include(&#x27;a.php&#x27;);</span><br><span class="line">	include(&#x27;b.php&#x27;);</span><br><span class="line">	</span><br><span class="line">- a.php代码</span><br><span class="line">&lt;?php</span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;b.php&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">- b.php代码</span><br><span class="line">&lt;?php</span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;b.php&quot;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>程序运行结果如下：</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515201634131.png" alt="image-20230515201634131"></p>
-<p>​	可以看到，报错信息显示<code>show()</code>函数被重复加载。</p>
-<p>​	使用命名空间。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- mian.php代码</span><br><span class="line">&lt;?php</span><br><span class="line">	include(&#x27;a.php&#x27;);</span><br><span class="line">	include(&#x27;b.php&#x27;);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">- a.php代码</span><br><span class="line">&lt;?php</span><br><span class="line">	namespace A;</span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;b.php&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">- b.php代码</span><br><span class="line">&lt;?php</span><br><span class="line">	namespace B;</span><br><span class="line">	function show()&#123;</span><br><span class="line">		echo &quot;b.php&quot;;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	建立命名空间后报错信息就消失了，调用函数形式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	include(&#x27;a.php&#x27;);</span><br><span class="line">	include(&#x27;b.php&#x27;);</span><br><span class="line">	A\show(); # 注意斜线</span><br><span class="line">	B\show();</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="1-8-函数"><a href="#1-8-函数" class="headerlink" title="1.8 函数"></a>1.8 函数</h3><p>​	代码块。</p>
-<h4 id="1-8-1-定义"><a href="#1-8-1-定义" class="headerlink" title="1.8.1 定义"></a>1.8.1 定义</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function 函数名称(参数列表)&#123;</span><br><span class="line">	函数代码块</span><br><span class="line">	[return 返回值]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-8-2-参数传递"><a href="#1-8-2-参数传递" class="headerlink" title="1.8.2 参数传递"></a>1.8.2 参数传递</h4><ul>
-<li>简单参数传递</li>
-<li>参数列表省略：将多个参数变成一个数组</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515203704396.png" alt="image-20230515203704396"></p>
-<ul>
-<li>默认参数</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515204311595.png" alt="image-20230515204311595"></p>
-<h4 id="1-8-3-类型约束"><a href="#1-8-3-类型约束" class="headerlink" title="1.8.3 类型约束"></a>1.8.3 类型约束</h4><p>​	对函数参数列表的参数进行类型约束。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515204648817.png" alt="image-20230515204648817"></p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515204703229.png" alt="image-20230515204703229"></p>
-<h4 id="1-8-4-返回值类型"><a href="#1-8-4-返回值类型" class="headerlink" title="1.8.4 返回值类型"></a>1.8.4 返回值类型</h4><p>​	对函数返回值类型进行约束。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515205003880.png" alt="image-20230515205003880"></p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515205036320.png" alt="image-20230515205036320"></p>
-<p>​	可以在返回值类型前面加一个<code>?</code>表示可以返回null。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515205448879.png" alt="image-20230515205448879"></p>
-<h4 id="1-8-5-变量作用域"><a href="#1-8-5-变量作用域" class="headerlink" title="1.8.5 变量作用域"></a>1.8.5 变量作用域</h4><p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515205850471.png" alt="image-20230515205850471"></p>
-<ul>
-<li>函数内部使用全局变量</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- $GLOABAL数组</span><br><span class="line">- global关键字</span><br><span class="line">- 引用</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>静态变量</li>
-</ul>
-<p>​	static</p>
-<h4 id="1-8-6-变量函数"><a href="#1-8-6-变量函数" class="headerlink" title="1.8.6 变量函数"></a>1.8.6 变量函数</h4><p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515210637922.png" alt="image-20230515210637922"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	function jpg()&#123;</span><br><span class="line">		echo &quot;This is a jpg photo&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	function png()&#123;</span><br><span class="line">		echo &quot;This is a png photo&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	$file = &quot;a.png&quot;;</span><br><span class="line">	$ext = strrchr($file, &#x27;.&#x27;);</span><br><span class="line">	$ext = trim($ext, &#x27;.&#x27;);</span><br><span class="line">	$ext = strtolower($ext);</span><br><span class="line">	</span><br><span class="line">	$ext();</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230515211509017.png" alt="image-20230515211509017"></p>
-<h4 id="1-8-7-递归函数"><a href="#1-8-7-递归函数" class="headerlink" title="1.8.7 递归函数"></a>1.8.7 递归函数</h4><p>​	函数调用他本身。</p>
-<h3 id="1-9-数组"><a href="#1-9-数组" class="headerlink" title="1.9 数组"></a>1.9 数组</h3><h4 id="1-9-1-定义"><a href="#1-9-1-定义" class="headerlink" title="1.9.1 定义"></a>1.9.1 定义</h4><ul>
-<li>索引数组</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$arr = array(1,2,3,4,5);</span><br><span class="line">	var_dump($arr);</span><br><span class="line">?&gt;</span><br><span class="line">或</span><br><span class="line">&lt;?php</span><br><span class="line">	$arr = [1,2,3,4,5];</span><br><span class="line">	var_dump($arr);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>关联数组</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$arr = array(</span><br><span class="line">		&#x27;a&#x27; =&gt; 1,</span><br><span class="line">		&#x27;b&#x27; =&gt; 2,</span><br><span class="line">	);</span><br><span class="line">	var_dump($arr);</span><br><span class="line">?&gt;</span><br><span class="line">或</span><br><span class="line">&lt;?php</span><br><span class="line">	$arr = [&#x27;a&#x27; =&gt; 1, &#x27;b&#x27; =&gt; 2];</span><br><span class="line">	var_dump($arr);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517194843415.png" alt="image-20230517194843415"></p>
-<ul>
-<li>多维数组</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">	$arr = [</span><br><span class="line">		&#x27;m&#x27; =&gt; [&#x27;a&#x27; =&gt; 1, &#x27;b&#x27; =&gt; 2],</span><br><span class="line">		&#x27;n&#x27; =&gt; [&#x27;c&#x27; =&gt; 3, &#x27;d&#x27; =&gt; 4],</span><br><span class="line">	];</span><br><span class="line">	echo $arr[&#x27;m&#x27;][&#x27;a&#x27;];</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-9-2-数组中常见的函数"><a href="#1-9-2-数组中常见的函数" class="headerlink" title="1.9.2 数组中常见的函数"></a>1.9.2 数组中常见的函数</h4><ul>
-<li>array_push()</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517195900984.png" alt="image-20230517195900984"></p>
-<ul>
-<li>array_pop()</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517195947386.png" alt="image-20230517195947386"></p>
-<ul>
-<li>array_shift()：删除掉第一个元素，并返回其值</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517200203545.png" alt="image-20230517200203545"></p>
-<ul>
-<li>array_unshift()：在数组开头插入一个或多个元素</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517200249313.png" alt="image-20230517200249313"></p>
-<ul>
-<li>count()：计算数组元素个数</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517200510845.png" alt="image-20230517200510845"></p>
-<ul>
-<li>in_array()：元素是否存在于数组中</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517200814224.png" alt="image-20230517200814224"></p>
-<ul>
-<li>array_key_exists()：键是否存在于数组中</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517201430905.png" alt="image-20230517201430905"></p>
-<ul>
-<li>array_keys()：提取keys</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517201536426.png" alt="image-20230517201536426"></p>
-<ul>
-<li>array_values()：提取value</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517203307429.png" alt="image-20230517203307429"></p>
-<ul>
-<li>array_filter()：用回调函数过滤数组中的元素</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517202503557.png" alt="image-20230517202503557"></p>
-<ul>
-<li>array_map()：将用户自定义函数作用到数组中的每个值上，并返回用户自定义函数作用后的带有新的值的数组。</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517202955423.png" alt="image-20230517202955423"></p>
-<ul>
-<li>array_merge()：合并数组</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517203509455.png" alt="image-20230517203509455"></p>
-<p>会存在覆盖的问题。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517203546057.png" alt="image-20230517203546057"></p>
-<ul>
-<li>array_change_key_case()：统一键名大小写</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517204000290.png" alt="image-20230517204000290"></p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517204016229.png" alt="image-20230517204016229"></p>
-<p>此函数仅对一维数组键名起效果。</p>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517204307561.png" alt="image-20230517204307561"></p>
-<p>需要递归对数组进行处理。</p>
-<ul>
-<li>array_walk_recursive()：对数组中的每个元素应用用户自定义函数</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517205532540.png" alt="image-20230517205532540"></p>
-<ul>
-<li>var_export()：以字符串形式打印数组键值对</li>
-</ul>
-<p><img src="/PHP%E5%AD%A6%E4%B9%A0/image-20230517211121695.png" alt="image-20230517211121695"></p>
-]]></content>
-      <categories>
-        <category>基础学习</category>
-        <category>编程基础</category>
-        <category>PHP基础学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>.git泄露利用原理分析</title>
-    <url>/2023/05/06/git%E6%B3%84%E9%9C%B2%E5%88%A9%E7%94%A8%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<blockquote>
-<p>从原理分析到实战</p>
-<p>当在一个新目录或者已有目录执行git init时，Git会创建一个.git目录，该目录包含了几乎所有Git存储和操作的东西。如若像备份或复制一个版本库时，只需把这个目录拷贝至另一处即可。而.git泄露正是开发人员在配置不当的情况下，直接把.git目录部署到线上环境。.git目录实际上就是本地仓库，保存着我们提交的数据以及其他配置信息等，重要性不言而喻。</p>
-</blockquote>
-<span id="more"></span>
-
-<h1 id="0x00-Git内部原理"><a href="#0x00-Git内部原理" class="headerlink" title="0x00 Git内部原理"></a>0x00 Git内部原理</h1><p>​	.git目录结构如下：</p>
-<p><img src="/2023/05/06/git%E6%B3%84%E9%9C%B2%E5%88%A9%E7%94%A8%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/image-20230506202517018.png" alt="image-20230506202517018"></p>
-<table>
-<thead>
-<tr>
-<th align="center">文件&#x2F;目录名</th>
-<th align="center">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">description</td>
-<td align="center">供GitWeb程序使用</td>
-</tr>
-<tr>
-<td align="center">config</td>
-<td align="center">包含项目特有的配置选项</td>
-</tr>
-<tr>
-<td align="center">info</td>
-<td align="center">包含.gitignore文件</td>
-</tr>
-<tr>
-<td align="center">hooks</td>
-<td align="center">包含客户端或服务端的钩子脚本</td>
-</tr>
-<tr>
-<td align="center">HEAD</td>
-<td align="center">指向目前被检出的分支</td>
-</tr>
-<tr>
-<td align="center">objects</td>
-<td align="center">存储所有数据内容</td>
-</tr>
-<tr>
-<td align="center">refs</td>
-<td align="center">存储指向数据（分支、远程仓库和标签等）</td>
-</tr>
-<tr>
-<td align="center">index</td>
-<td align="center">保存暂存区信息</td>
-</tr>
-</tbody></table>
-<h2 id="1-Git对象"><a href="#1-Git对象" class="headerlink" title="1. Git对象"></a>1. Git对象</h2><h3 id="1-1-数据对象（blob-object）"><a href="#1-1-数据对象（blob-object）" class="headerlink" title="1.1 数据对象（blob object）"></a>1.1 数据对象（blob object）</h3><p>​	从本质上来说，Git是一个内容寻址文件系统。Git的核心部分是一个简单的键值对数据库，我们可以向Git仓库中插入任意类型的内容，它会返回一个唯一的键，通过该键可以在任何时刻再次取回该内容。<code>.git/objects</code>目录保存着所有数据内容。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &#x27;test content&#x27; | git hash-object -w --stdin</span><br><span class="line"># hash-object返回可以存储在Git仓库中的唯一键</span><br><span class="line"># -w表示该命令不要只返回键，还要将该对象写入数据库中</span><br><span class="line"># --sdtin表示该命令从标准输入中获取命令</span><br></pre></td></tr></table></figure>
-
-<p>​	上述命令输出一个长度为40个字符的校验和。（这是一个SHA-1哈希值，一个将带存储的数据外加一个头部信息一起做SHA-1校验运算而得的校验和），Git存储内容的方式：一个文件对于一条内容，以该内容加上特定头部信息一起的SHA-1校验和为文件命名（校验和的前两个字符用于命名子目录，剩下的38个字符用于文件名）。</p>
-<p><img src="/2023/05/06/git%E6%B3%84%E9%9C%B2%E5%88%A9%E7%94%A8%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/image-20230506212357286.png" alt="image-20230506212357286"></p>
-<p>​	一旦我们将内容存储在对象数据库中，那么可以通过<code>cat-file</code>命令从Git那里取回数据。</p>
-<p><img src="/2023/05/06/git%E6%B3%84%E9%9C%B2%E5%88%A9%E7%94%A8%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/image-20230506212908132.png" alt="image-20230506212908132"></p>
-<p>​	这段想要表示的就是Git将我们的文件内容以特殊的形式保存在了.git&#x2F;objects目录下，同时blob对象保存的是文件内容，知道对应的SHA-1值我们可以查看其内容~</p>
-<p>​	可以使用<code>git cat-file -t SHA-1值</code>查看该SHA-1值对应的对象类型。</p>
-<h3 id="1-2-树对象（tree-object）"><a href="#1-2-树对象（tree-object）" class="headerlink" title="1.2 树对象（tree object）"></a>1.2 树对象（tree object）</h3><p>​	树对象能解决文件名保存的问题。</p>
-<p><img src="/2023/05/06/git%E6%B3%84%E9%9C%B2%E5%88%A9%E7%94%A8%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/image-20230506214020823.png" alt="image-20230506214020823"></p>
-<p><img src="/2023/05/06/git%E6%B3%84%E9%9C%B2%E5%88%A9%E7%94%A8%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/image-20230506214241613.png" alt="image-20230506214241613"></p>
-<p>​	Git根据某一时刻暂存区（即index区域）所表示的状态创建并记录一个对应的树对象，如此重复便可一次记录一系列的树对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git update-index --add --cacheinfo 100644 SHA-1值 文件名</span><br><span class="line"># update-index 底层命令，为单独的文件创建一个暂存区</span><br><span class="line"># --add 加入暂存区</span><br><span class="line"># --cacheinfo 将要添加的文件位于Git数据库</span><br><span class="line"># 100644 文件模式，为普通文件（100755可执行文件、120000符号链接等）</span><br></pre></td></tr></table></figure>
-
-<p>​	使用<code>git write-tree</code>命令将暂存区内容写入一个树对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git write-tree</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-提交对象"><a href="#1-3-提交对象" class="headerlink" title="1.3 提交对象"></a>1.3 提交对象</h3>]]></content>
-      <categories>
-        <category>渗透测试</category>
-        <category>WEB渗透</category>
-        <category>信息泄露</category>
-      </categories>
   </entry>
 </search>
