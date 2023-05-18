@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>git现学现用</title>
+    <title>Git现学现用</title>
     <url>/2023/05/18/Git%E7%8E%B0%E5%AD%A6%E7%8E%B0%E7%94%A8/</url>
     <content><![CDATA[<blockquote>
 <p>Git是一个开源的分布式版本控制系统。</p>
@@ -13,7 +13,7 @@
 
 <h1 id="一、版本控制"><a href="#一、版本控制" class="headerlink" title="一、版本控制"></a>一、版本控制</h1><p>什么是版本控制？简单来说就是<strong>记录</strong>和<strong>管理</strong>、<strong>跟踪</strong>版本信息迭代的过程。就存档类游戏而言，我们需要不断对游戏进度就进行存档，以保证退出游戏后当前游戏进度不会丢失，而每一次的存档就相当于这个地方的版本，我们有必要对版本进行控制。</p>
 <p>版本控制分为本地版本控制、集中版本控制以及分布式版本控制，常见的版本控制工具有Git、SVN以及CVS等。</p>
-<p><img src="/git%E7%8E%B0%E5%AD%A6%E7%8E%B0%E7%94%A8/image-20230518222049535.png" alt="image-20230518222049535"></p>
+<p><img src="/2023/05/18/Git%E7%8E%B0%E5%AD%A6%E7%8E%B0%E7%94%A8/image-20230518222049535.png" alt="image-20230518222049535"></p>
 <p><br/><br/></p>
 <h1 id="二、Git使用"><a href="#二、Git使用" class="headerlink" title="二、Git使用"></a>二、Git使用</h1><h2 id="1-Git基本概念"><a href="#1-Git基本概念" class="headerlink" title="1. Git基本概念"></a>1. Git基本概念</h2><p>Git是我们进行分布式版本控制的基石。Git使得客户端拥有仓库的完整镜像，即使服务器挂了也不要紧，事后可以用任何一个镜像出来的本地仓库恢复。</p>
 <p>在这种模式下，Git中存在着三块区域：工作区、暂存区以及仓库。工作区就是我们在电脑里能看到的目录；暂存区本质上是一个文件(.git&#x2F;index)，临时存放我们的改动；仓库是Git用来保存项目的元数据和对象数据库的地方，工作区中有个.git目录，该目录就是本地仓库。</p>
@@ -91,6 +91,11 @@
 <br/>
 
 <h2 id="4-Git基本操作"><a href="#4-Git基本操作" class="headerlink" title="4. Git基本操作"></a>4. Git基本操作</h2><ul>
+<li>公钥生成</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen [-t rsa]# 生成公钥 -t 指定算法</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>新建本地仓库</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init # 执行完会生成.git目录</span><br><span class="line">git clone URL # 远程</span><br></pre></td></tr></table></figure>
