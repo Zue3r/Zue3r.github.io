@@ -21,7 +21,7 @@
 <blockquote>
 <p>仓库中的文件状态</p>
 </blockquote>
-<p>仓库中的文件状态有两种：已跟踪和未跟踪。未跟踪的文件不会被纳入版本控制。一般有些文件无需纳入Git的管理，也不希望出现在未跟踪列表，这时候可以使用**.gitignore**文件列出要忽略的文件模式。</p>
+<p>仓库中的文件状态有两种：已跟踪和未跟踪。未跟踪的文件不会被纳入版本控制。一般有些文件无需纳入Git的管理，也不希望出现在未跟踪列表，这时候可以使用.gitignore文件列出要忽略的文件模式。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*.a # 忽略所有的.a文件</span><br><span class="line">!lib.a # 跟踪所有的lib.a</span><br><span class="line">/TODO # 只忽略当前目录下的TODO</span><br><span class="line">build/ # 忽略任何目录下名为build的文件</span><br><span class="line">doc/*.txt # 忽略doc/a.txt，但不忽略doc/a/a.txt</span><br></pre></td></tr></table></figure>
 
 <br/>
